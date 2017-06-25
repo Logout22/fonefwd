@@ -1,3 +1,6 @@
+*.iml
+/local.properties
+/.idea/libraries
 .DS_Store
 .idea/shelf
 /android.tests.dependencies
@@ -21,4 +24,6 @@ workspace.xml
 .gradle/
 build/
 !**/src/**/build
-
+/build
+/captures
+.externalNativeBuild
