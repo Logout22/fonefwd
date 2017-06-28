@@ -4,8 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.View
 
-class MainActivity(val activityChanger: ActivityChanger = AndroidActivityChanger())
-    : Activity(), ActivityChanger by activityChanger {
+class MainActivity(val activityChanger: IActivityChanger = ActivityChanger())
+    : Activity(), IActivityChanger by activityChanger {
 
     val uiState: UIState = UIState(this, UIStates.MAIN)
 

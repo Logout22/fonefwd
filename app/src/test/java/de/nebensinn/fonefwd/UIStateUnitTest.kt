@@ -5,7 +5,7 @@ import org.junit.Test
 import org.mockito.Mockito.*
 
 class UIStateUnitTest {
-    val mainActivityMock = mock(ActivityChanger::class.java)!!
+    val mainActivityMock = mock(IActivityChanger::class.java)!!
 
     @Test
     fun viewRules_shouldChangeStateToRules() {
@@ -26,14 +26,5 @@ class UIStateUnitTest {
         val uiState = UIState(mainActivityMock, UIStates.RULES)
         uiState.viewRules()
         verify(mainActivityMock, never()).changeActivityTo(ViewRules::class.java)
-    }
-
-    @Test
-    fun reset_shouldChangeStateToMain() {
-        val uiState = UIState(mainActivityMock, UIStates.MAIN)
-        uiState.viewRules()
-        assertEquals(UIStates.RULES, uiState.state)
-        uiState.reset()
-        assertEquals(UIStates.MAIN, uiState.state)
     }
 }
