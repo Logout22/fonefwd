@@ -4,11 +4,10 @@ enum class MainStates {
     START, ADDING
 }
 
-class MainState(private val ruleModel: IRuleModel = RuleModel(), initialState: MainStates) : State<MainStates>(initialState) {
-    fun addRule(rule: Rule) {
+class MainState(initialState: MainStates) : State<MainStates>(initialState) {
+    fun startAddingRules() {
         if (_state != MainStates.ADDING) {
             _state = MainStates.ADDING
-            ruleModel.addRule(rule)
         }
     }
 }

@@ -1,16 +1,24 @@
 package de.nebensinn.fonefwd
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 
-class MainActivity(val activityChanger: IActivityChanger = ActivityChanger())
-    : Activity(), IActivityChanger by activityChanger {
+class MainActivity() : Activity() {
 
-    val uiState: UIState = UIState(this, UIStates.MAIN)
+    val uiState: UIState = UIState(UIStates.MAIN)
+
+    lateinit private var context: Context
+
+    fun <T : Class<*>> changeActivityTo(newActivity: T) {
+        val intent = Intent(context, newActivity)
+        context.startActivity(intent)
+    }
 
     init {
-        activityChanger.setContext(this)
+        this.context = context
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +28,7 @@ class MainActivity(val activityChanger: IActivityChanger = ActivityChanger())
 
     fun viewRulesButtonClicked(view: View) {
         uiState.viewRules()
+        changeActivityTo(ViewRules::class.java)
     }
 
     override fun onResume() {
