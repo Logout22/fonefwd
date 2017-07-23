@@ -1,5 +1,11 @@
 package de.nebensinn.fonefwd
 
+import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.intent.Intents
+import android.support.test.espresso.intent.Intents.intended
+import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 
@@ -14,17 +20,8 @@ class MainActivityTest {
 
     @Test
     fun switchToRulesView() {
-        val activity = testRule.activity
-        val viewButton = activity.findViewById(R.id.viewActiveRulesButton)
-        // TODO wrong thread: viewButton.performClick()
-
-        // TODO Test with Espresso
-        /*Intents.init()
-        intending(anyOf(hasComponent(MainActivity::class.java.name), hasComponent(OnboardingActivity::class.java!!.getName())))
-                .respondWith(Instrumentation.ActivityResult(Activity.RESULT_CANCELED, null))
-        // inject User instance here
-        mActivityRule.launchActivity(null)
-        intended(hasComponent(MainActivity::class.java.name), times(1))
-        Intents.release()*/
+        Intents.init()
+        onView(withId(R.id.viewActiveRulesButton)).perform(click())
+        intended(hasComponent(ViewRulesActivity::class.java.name))
     }
 }

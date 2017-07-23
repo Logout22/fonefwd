@@ -9,8 +9,8 @@ class MainActivity() : Activity() {
 
     val uiState: UIState = UIState(UIStates.MAIN)
 
-    fun <T : Class<*>> changeActivityTo(newActivity: T) {
-        val intent = Intent(this, newActivity)
+    fun switchToViewRulesActivity() {
+        val intent = Intent(this, ViewRulesActivity::class.java)
         startActivity(intent)
     }
 
@@ -21,7 +21,7 @@ class MainActivity() : Activity() {
 
     fun viewRulesButtonClicked(view: View) {
         uiState.viewRules()
-        changeActivityTo(ViewRulesActivity::class.java)
+        switchToViewRulesActivity()
     }
 
     override fun onResume() {
