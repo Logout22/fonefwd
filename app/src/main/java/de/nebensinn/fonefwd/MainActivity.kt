@@ -7,8 +7,6 @@ import android.view.View
 
 class MainActivity() : Activity() {
 
-    val uiState: UIState = UIState(UIStates.MAIN)
-
     fun switchToViewRulesActivity() {
         val intent = Intent(this, ViewRulesActivity::class.java)
         startActivity(intent)
@@ -20,12 +18,6 @@ class MainActivity() : Activity() {
     }
 
     fun viewRulesButtonClicked(view: View) {
-        uiState.viewRules()
         switchToViewRulesActivity()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        uiState.reset()
     }
 }

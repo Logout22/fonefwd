@@ -18,6 +18,6 @@ class RulesViewAdapter(val ruleModel: RuleModel) : RecyclerView.Adapter<RulesVie
     override fun getItemCount(): Int = ruleModel.rules.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RulesViewHolder =
-            RulesViewHolder(LayoutInflater.from(parent!!.getContext())
+            RulesViewHolder(LayoutInflater.from(parent!!.context)
                     .inflate(R.layout.rule_row, parent, false))
 }

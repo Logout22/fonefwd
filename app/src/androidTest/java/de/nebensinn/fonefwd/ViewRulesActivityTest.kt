@@ -1,24 +1,21 @@
 package de.nebensinn.fonefwd
 
+import android.content.Intent
 import android.support.test.filters.MediumTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-
+import android.support.v7.widget.RecyclerView
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.assertEquals
-import android.content.Intent
-import android.support.v7.widget.RecyclerView
 
 val ForwardRule = Rule("param1", "param2")
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)
 class ViewRulesActivityTest {
-    class MyActivityTestRule : ActivityTestRule<ViewRulesActivity>(ViewRulesActivity::class.java)
-    {
+    class MyActivityTestRule : ActivityTestRule<ViewRulesActivity>(ViewRulesActivity::class.java) {
         override fun getActivityIntent(): Intent {
             val initialIntent = super.getActivityIntent()
             initialIntent.putExtra(VIEWRULES_EXTRA_NEWRULE, ForwardRule)
