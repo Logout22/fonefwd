@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class Rule(val wifiSSID: String, val targetPhoneNumber: String) : Serializable {
     override fun toString(): String = "When on $wifiSSID, forward to $targetPhoneNumber"
+    fun toStringSet(): MutableSet<String> = mutableSetOf(wifiSSID, targetPhoneNumber)
 }
 
 interface IRuleModel {

@@ -3,9 +3,9 @@ package de.nebensinn.fonefwd
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 
 class MainActivity() : Activity() {
+    val ruleModel = RuleModel()
 
     fun switchToViewRulesActivity() {
         val intent = Intent(this, ViewRulesActivity::class.java)
@@ -17,7 +17,11 @@ class MainActivity() : Activity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun viewRulesButtonClicked(view: View) {
+    fun viewRulesButtonClicked() {
         switchToViewRulesActivity()
+    }
+
+    fun activateWiFi(ssid: String) {
+
     }
 }
