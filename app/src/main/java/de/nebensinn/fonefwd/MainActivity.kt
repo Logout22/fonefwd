@@ -3,6 +3,7 @@ package de.nebensinn.fonefwd
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 
 class MainActivity() : Activity() {
     val ruleModel = RuleModel()
@@ -17,7 +18,7 @@ class MainActivity() : Activity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun viewRulesButtonClicked() {
+    fun viewRulesButtonClicked(@Suppress("UNUSED_PARAMETER") v: View) {
         switchToViewRulesActivity()
     }
 
