@@ -37,8 +37,8 @@ class RuleModelUnitTest {
         ruleModel.updateRule("twelve", Rule("", ""))
     }
 
-    @Test(expected = IllegalStateException::class)
-    fun updateRule_shouldFailIfRuleDoesNotExist() {
+    @Test
+    fun updateRule_shouldIgnoreUpdatesToNonExistingRules() {
         ruleModel.addRule(Rule("MyWifi", "12345"))
         ruleModel.updateRule("1", Rule("", ""))
         ruleModel.updateRule("-22", Rule("", ""))
@@ -54,6 +54,32 @@ class RuleModelUnitTest {
         val newRule = Rule("MyNewWifi", "15764")
         ruleModel.updateRule(ruleIndex.toString(), newRule)
         assertEquals(newRule, ruleModel.rules[ruleIndex])
+    }
+
+    @Test
+    fun loadRules_shouldLoadRulesFromMap() {
+        val validMap = mapOf(
+                Pair("0_ssid", "ssid1"),
+                Pair("0_phone","1234"),
+                Pair("1_ssid", "ssid2"),
+                Pair("1_phone","5678")
+        )
+        ruleModel.loadRules(validMap)
+        assertEquals(2, ruleModel.rules.size)
+    }
+
+    @Test
+    fun loadRules_shouldNotLoadRulesFromMapIfKeyNotIndex() {
+        val invalidMap = mapOf(Pair("key", setOf("")))
+        ruleModel.loadRules(invalidMap)
+        assertEquals(0, ruleModel.rules.size)
+    }
+
+    @Test
+    fun loadRules_shouldNotLoadRulesFromMapIfTypeMismatches() {
+        val invalidMap = mapOf(Pair("0_ssid", 8.7), Pair("0_phone", 12))
+        ruleModel.loadRules(invalidMap)
+        assertEquals(0, ruleModel.rules.size)
     }
 
     @Test

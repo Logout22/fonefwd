@@ -34,5 +34,6 @@ class ViewRulesActivityTest {
         val firstViewHolder =
                 rulesView.findViewHolderForAdapterPosition(0) as RulesViewHolder
         assertEquals("When on param1, forward to param2", firstViewHolder.ruleLabel.text)
+        // TODO: add rule to shared preferences and update mainactivity
     }
 }
